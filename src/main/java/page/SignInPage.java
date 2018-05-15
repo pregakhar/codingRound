@@ -16,8 +16,7 @@ public class SignInPage extends HomePage{
     public void signIn() {
         driver.findElement(By.linkText("Your trips")).click();
         driver.findElement(By.id("SignIn")).click();
-
-        Helper.waitFor(2000);
+        Helper.waitFor(5000);
         driver.switchTo().frame(driver.findElement(By.id("modal_window")));
         driver.findElement(By.id("signInButton")).click();
     }

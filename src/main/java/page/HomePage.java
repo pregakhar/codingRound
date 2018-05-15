@@ -14,6 +14,5 @@ public class HomePage {
 
     public void open() {
         driver.get("https://www.cleartrip.com/");
-        Helper.waitFor(2000);
     }
 }

@@ -9,7 +9,7 @@ import util.Helper;
 
 public class SignInTest {
 
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver = Helper.buildDriver();
 
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing(){

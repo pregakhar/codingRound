@@ -1,10 +1,8 @@
-import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.FlightPage;
@@ -12,7 +10,7 @@ import util.Helper;
 
 public class FlightBookingTest {
 
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver = Helper.buildDriver();
 
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
@@ -22,7 +20,6 @@ public class FlightBookingTest {
 
         new FlightPage(driver).search();
 
-        Helper.waitFor(5000);
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
@@ -33,6 +30,8 @@ public class FlightBookingTest {
 
     private boolean isElementPresent(By by) {
         try {
+            new WebDriverWait(driver, 5)
+                    .until(ExpectedConditions.presenceOfElementLocated(by));
             driver.findElement(by);
             return true;
         } catch (NoSuchElementException e) {

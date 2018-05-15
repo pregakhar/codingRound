@@ -11,11 +11,7 @@ import util.Helper;
 
 public class HotelBookingTest {
 
-    WebDriver driver;
-
-    public HotelBookingTest() {
-        driver = new ChromeDriver();
-    }
+    WebDriver driver = Helper.buildDriver();;
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
